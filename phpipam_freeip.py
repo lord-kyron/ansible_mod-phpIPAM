@@ -154,7 +154,7 @@ def main():
     if subnet_response:
         url += 'addresses/first_free/'
         subnet_id = session.get_subnet_id(subnet, section)
-        payload = urllib.urlencode({'subnetId': subnet_id,
+        payload = urllib.parse.urlencode({'subnetId': subnet_id,
                                     'hostname': hostname,
                                     'description': description})
         free_ip = json.load(session.post(url, payload))

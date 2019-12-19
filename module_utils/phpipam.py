@@ -81,16 +81,16 @@ class PhpIpamWrapper(urls.Request):
             return None
 
     def create(self, session, url, **kwargs):
-        payload = urllib.urlencode(dict(**kwargs))
+        payload = urllib.parse.urlencode(dict(**kwargs))
         result = json.load(session.post(url, data=payload))
         return result
 
     def modify(self, session, url, **kwargs):
-        payload = urllib.urlencode(dict(**kwargs))
+        payload = urllib.parse.urlencode(dict(**kwargs))
         result = json.load(session.patch(url, data=payload))
         return result
 
     def remove(self, session, url, id):
-        payload = urllib.urlencode({'id': id})
+        payload = urllib.parse.urlencode({'id': id})
         result = json.load(session.delete(url, data=payload))
         return result
